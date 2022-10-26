@@ -1,15 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Greek gods</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bellybutton Biodiversity</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@100&family=Water+Brush&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div id="plot"></div>
-    <script src="data.js"></script>
-    <script src="plots.js"></script>
+
+<body style="background-color: antiquewhite; font-family: 'Open Sans', sans-serif;">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">BBBD</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#filters">Filters</a></li>
+        <li><a href="#bar">Bar</a></li>
+        <li><a href="#gauge">Gauge</a></li>
+        <li><a href="#bubble">Bubble</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container" style="margin-top: 70px">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center jumbotron-fluid" style="background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.75)), url(images/navels.jpg); background-repeat: no-repeat; background-size: cover;">
+        <h1 style="color: rgb(10, 38, 58)">Belly Button Biodiversity Dashboard</h1>
+        <p style="color: rgb(38, 54, 66)"">Use the interactive charts below to explore the dataset</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well" id="filters">
+          <h5>Test Subject ID No.:</h5>
+          <!-- <select id="selDataset"></select> -->
+          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Demographic Info</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+        </div>
+      </div>
+      <div class="col-md-5" style="padding: 1%;">
+        <div id="bar"></div>
+      </div>
+      <div class="col-md-5" style="padding: 1%;">
+        <div id="gauge"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="padding: 1%;">
+        <div id="bubble"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="charts.js"></script>
+
 </body>
+
 </html>
